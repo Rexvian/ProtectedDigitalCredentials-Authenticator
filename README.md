@@ -235,7 +235,7 @@ Recommended security practices include:
 
 ## License
 
-This project is licensed under the MIT License. See the `LICENSE` file for details.
+This project is licensed under the MIT License. See the `[LICENSE](https://github.com/Rexvian/PDC-Authenticator-Protected-Digital-Credentials-/blob/main/LICENCE)` file for details.
 
 ---
 
