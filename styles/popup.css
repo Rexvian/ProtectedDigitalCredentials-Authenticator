@@ -1,0 +1,1198 @@
+/* ========================================
+   RESET & BASE
+   ======================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #1a1a1a;
+    color: #ffffff;
+    width: 380px;
+    min-height: 520px;
+    max-height: 600px;
+    overflow: hidden;
+}
+
+/* ========================================
+   APP CONTAINER
+   ======================================== */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    max-height: 600px;
+    background: #1a1a1a;
+}
+
+/* ========================================
+   HEADER
+   ======================================== */
+.header {
+    padding: 12px 16px 8px 16px;
+    background: #1a1a1a;
+    border-bottom: 1px solid #2d2d2d;
+    flex-shrink: 0;
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 4px;
+}
+
+.header-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    flex-shrink: 0;
+}
+
+.account-count {
+    font-size: 11px;
+    color: #888888;
+    margin-top: 0;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.account-count-text {
+    color: #888888;
+}
+
+/* ========================================
+   SCREENS
+   ======================================== */
+.screen {
+    display: flex;
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    flex-direction: column;
+}
+
+.screen.hidden {
+    display: none;
+}
+
+.screen-content {
+    width: 100%;
+    max-width: 340px;
+    margin: 0 auto;
+}
+
+.screen-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+}
+
+/* ========================================
+   ICONS
+   ======================================== */
+.icon-large {
+    font-size: 48px;
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+/* ========================================
+   TYPOGRAPHY
+   ======================================== */
+.screen-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 6px;
+}
+
+.screen-subtitle {
+    font-size: 13px;
+    color: #888888;
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+/* ========================================
+   FORM ELEMENTS
+   ======================================== */
+.form-group {
+    margin-bottom: 12px;
+}
+
+.form-group-inline {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.form-label {
+    display: block;
+    font-size: 12px;
+    color: #ffffff;
+    margin-bottom: 3px;
+    font-weight: 500;
+}
+
+.form-label-small {
+    display: block;
+    font-size: 10px;
+    color: #888888;
+    margin-bottom: 2px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 8px 12px;
+    background: #2d2d2d;
+    border: 1px solid #3d3d3d;
+    border-radius: 6px;
+    color: #ffffff;
+    font-size: 14px;
+    transition: border-color 0.2s;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #007acc;
+}
+
+.form-input::placeholder {
+    color: #666666;
+}
+
+.form-input-small {
+    width: 100%;
+    padding: 6px 10px;
+    background: #2d2d2d;
+    border: 1px solid #3d3d3d;
+    border-radius: 4px;
+    color: #ffffff;
+    font-size: 12px;
+}
+
+.form-input-small:focus {
+    outline: none;
+    border-color: #007acc;
+}
+
+.form-input-small::placeholder {
+    color: #666666;
+}
+
+/* ========================================
+   BUTTONS
+   ======================================== */
+.btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.1s;
+    margin-top: 4px;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.btn:active {
+    transform: scale(0.97);
+}
+
+.btn-primary {
+    background: #007acc;
+    color: #ffffff;
+}
+
+.btn-secondary {
+    background: #2d2d2d;
+    color: #ffffff;
+}
+
+.btn-small {
+    padding: 4px 12px;
+    font-size: 12px;
+    border-radius: 4px;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
+.btn-danger {
+    background: linear-gradient(95deg, #e74c3c, #c0392b);
+    border: none;
+    color: white;
+}
+
+.btn-danger:hover {
+    transform: scale(1.03);
+    opacity: 0.9;
+}
+
+.btn-success {
+    background: linear-gradient(95deg, #27ae60, #2ecc71);
+    border: none;
+    color: white;
+}
+
+.btn-success:hover {
+    transform: scale(1.03);
+    opacity: 0.9;
+}
+
+/* ========================================
+   SETTINGS SCREEN
+   ======================================== */
+.settings-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.settings-header .screen-title {
+    margin-bottom: 0;
+    flex: 1;
+}
+
+.settings-header .btn {
+    margin-top: 0;
+}
+
+.settings-section {
+    margin-bottom: 20px;
+}
+
+.settings-section-title {
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 4px;
+}
+
+.settings-section-desc {
+    font-size: 12px;
+    color: #888888;
+    margin-bottom: 10px;
+}
+
+.settings-row {
+    display: flex;
+    gap: 12px;
+}
+
+.settings-row .form-group {
+    flex: 1;
+    margin-bottom: 10px;
+}
+
+.settings-status {
+    font-size: 12px;
+    min-height: 20px;
+    margin-top: 6px;
+    text-align: center;
+}
+
+.settings-status.success {
+    color: #88ff88;
+}
+
+.settings-status.error {
+    color: #ff4444;
+}
+
+.settings-status.info {
+    color: #ffaa44;
+}
+
+.settings-divider {
+    border-top: 1px solid #2d2d2d;
+    margin: 16px 0;
+}
+
+.settings-file-input {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.settings-file-name {
+    font-size: 12px;
+    color: #888888;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.settings-file-input .btn {
+    margin-top: 0;
+    flex-shrink: 0;
+}
+
+.settings-about-text {
+    font-size: 12px;
+    color: #666666;
+    line-height: 1.6;
+}
+
+/* ========================================
+   SETTINGS TOGGLE
+   ======================================== */
+
+.settings-toggle {
+    display: flex;
+    align-items: center;
+    padding: 4px 0;
+}
+
+.settings-toggle-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.settings-toggle-label input[type="checkbox"] {
+    display: none;
+}
+
+/* Smaller slider */
+.settings-toggle-slider {
+    position: relative;
+    width: 34px;
+    height: 18px;
+    background: #3d3d3d;
+    border-radius: 9px;
+    transition: background 0.3s ease;
+    flex-shrink: 0;
+}
+
+/* Smaller knob */
+.settings-toggle-slider::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 14px;
+    height: 14px;
+    background: #888888;
+    border-radius: 50%;
+    transition: transform 0.3s ease, background 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* ON state */
+.settings-toggle-label input[type="checkbox"]:checked+.settings-toggle-slider {
+    background: #2ecc71;
+}
+
+.settings-toggle-label input[type="checkbox"]:checked+.settings-toggle-slider::after {
+    transform: translateX(16px);
+    background: #ffffff;
+}
+
+/* Smaller label text */
+.settings-toggle-text {
+    font-size: 11px;
+    color: #ffffff;
+    flex: 1;
+    font-weight: 500;
+}
+
+/* ========================================
+   MAIN SCREEN LAYOUT
+   ======================================== */
+#mainScreen {
+    display: flex;
+    flex-direction: column;
+    padding: 12px 16px 12px 16px;
+    flex: 1;
+    min-height: 0;
+}
+
+#mainScreen.hidden {
+    display: none;
+}
+
+.add-form {
+    background: #2d2d2d;
+    padding: 10px 12px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    flex-shrink: 0;
+}
+
+.form-row {
+    display: flex;
+    gap: 8px;
+    align-items: flex-end;
+}
+
+.form-row .form-group-inline {
+    flex: 1;
+}
+
+.form-row .btn {
+    margin-top: 0;
+    padding: 6px 16px;
+    height: 32px;
+}
+
+/* ========================================
+   ACCOUNT LIST
+   ======================================== */
+.account-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 4px 0;
+    min-height: 80px;
+    max-height: 280px;
+}
+
+.account-list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.account-list::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+.account-list::-webkit-scrollbar-thumb {
+    background: #3d3d3d;
+    border-radius: 2px;
+}
+
+/* ========================================
+   EMPTY STATE
+   ======================================== */
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 0;
+    color: #555555;
+}
+
+.empty-icon {
+    font-size: 36px;
+    margin-bottom: 8px;
+}
+
+.empty-text {
+    font-size: 14px;
+    color: #666666;
+}
+
+.empty-subtext {
+    font-size: 12px;
+    color: #444444;
+    margin-top: 4px;
+}
+
+/* ========================================
+   ACCOUNT ITEM
+   ======================================== */
+.account-item {
+    background: #2d2d2d;
+    border: 1px solid #3d3d3d;
+    border-radius: 4px;
+    padding: 6px 10px;
+    margin-bottom: 4px;
+}
+
+.account-item-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.account-name {
+    font-size: 12px;
+    font-weight: bold;
+    color: #ffffff;
+    min-width: 60px;
+    flex-shrink: 0;
+}
+
+.account-code-group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex: 1;
+    justify-content: flex-end;
+}
+
+.account-code {
+    font-family: 'Courier New', monospace;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.account-code-safe {
+    color: #4caf50;
+}
+
+.account-code-warning {
+    color: #ffaa44;
+}
+
+.account-code-danger {
+    color: #ff4444;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+}
+
+.account-timer {
+    font-size: 11px;
+    color: #888888;
+    min-width: 30px;
+    text-align: center;
+}
+
+.account-actions {
+    display: flex;
+    gap: 2px;
+}
+
+.account-actions .btn-icon {
+    background: #3d3d3d;
+    color: #ffffff;
+    border: none;
+    border-radius: 3px;
+    padding: 2px 6px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background 0.2s;
+}
+
+.account-actions .btn-icon:hover {
+    background: #4d4d4d;
+}
+
+.account-actions .btn-icon.btn-delete {
+    color: #ff4444;
+}
+
+.account-actions .btn-icon.btn-delete:hover {
+    background: #4d2d2d;
+}
+
+/* ========================================
+   FOOTER ACTIONS (COMPACT)
+   ======================================== */
+.footer-actions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 0 0 0;
+    border-top: 1px solid #2d2d2d;
+    flex-shrink: 0;
+    margin-top: auto;
+    min-height: 28px;
+}
+
+.footer-actions .btn {
+    margin-top: 0;
+    padding: 2px 10px;
+    font-size: 11px;
+    height: 24px;
+    border-radius: 4px;
+    line-height: 20px;
+}
+
+.status-bar {
+    flex: 1;
+    font-size: 11px;
+    color: #88ff88;
+    padding: 2px 8px;
+    background: #2d2d2d;
+    border-radius: 4px;
+    text-align: left;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 24px;
+    line-height: 20px;
+}
+
+/* ========================================
+   TOAST NOTIFICATION (COMPACT)
+   ======================================== */
+.toast-notification {
+    position: fixed;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: #1a1f2e;
+    color: #88ff88;
+    padding: 4px 16px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 500;
+    border: 1px solid #2ecc71;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+    z-index: 999;
+    max-width: 85%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    backdrop-filter: blur(8px);
+}
+
+.toast-notification.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.toast-notification.error {
+    color: #ff4444;
+    border-color: #ff4444;
+}
+
+.toast-notification.success {
+    color: #88ff88;
+    border-color: #2ecc71;
+}
+
+.toast-notification.warning {
+    color: #ffaa44;
+    border-color: #ffaa44;
+}
+
+/* ========================================
+   DELETE CONFIRMATION MODAL (COMPACT)
+   ======================================== */
+.delete-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.delete-modal-overlay.active {
+    display: flex;
+}
+
+.delete-modal {
+    background: #1a1f2e;
+    border-radius: 16px;
+    padding: 20px 24px 16px 24px;
+    max-width: 320px;
+    width: 90%;
+    border: 1px solid #3d3d3d;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
+    text-align: center;
+}
+
+.delete-modal-icon {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.delete-modal-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 4px;
+}
+
+.delete-modal-message {
+    font-size: 13px;
+    color: #888888;
+    margin-bottom: 16px;
+}
+
+.delete-modal-actions {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.delete-modal-actions .btn {
+    padding: 6px 20px;
+    font-size: 13px;
+    border-radius: 20px;
+    min-width: 80px;
+    margin-top: 0;
+}
+
+/* ========================================
+   ERROR MESSAGES
+   ======================================== */
+.error-message {
+    font-size: 12px;
+    color: #ff4444;
+    min-height: 20px;
+    margin-top: 4px;
+    text-align: center;
+}
+
+/* ========================================
+   WARNING TEXT
+   ======================================== */
+.warning-text {
+    font-size: 11px;
+    color: #ffaa44;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* ========================================
+   UTILITY
+   ======================================== */
+.hidden {
+    display: none !important;
+}
+
+/* ========================================
+   SCROLLBAR STYLING
+   ======================================== */
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3d3d3d;
+    border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #4d4d4d;
+}
+
+/* ========================================
+   Custom Confrim ALert
+   ======================================== */
+
+.custom-confirm-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.custom-confirm {
+    width: 360px;
+    max-width: calc(100% - 40px);
+    background: #2d2d2d;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.custom-confirm h3 {
+    margin: 0 0 10px;
+}
+
+.custom-confirm p {
+    margin: 0 0 24px;
+}
+
+.custom-confirm-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.custom-confirm-buttons button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.cancel-btn {
+    background: #e5e5e5;
+}
+
+.delete-btn {
+    background: #dc3545;
+    color: white;
+}
+
+/* ========================================
+   INITIALIZATION
+   Prevent popup flash during startup
+   ======================================== */
+body.initializing #app {
+    visibility: hidden;
+}
+
+body.initialized #app {
+    visibility: visible;
+}
+
+/* ========================================
+   EDIT ACCOUNT MODAL
+   ======================================== */
+.edit-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-modal-overlay.active {
+    display: flex;
+}
+
+.edit-modal {
+    background: #1a1f2e;
+    border-radius: 12px;
+    padding: 16px 20px;
+    max-width: 340px;
+    width: 92%;
+    border: 1px solid #3d3d3d;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
+}
+
+.edit-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #2d2d2d;
+}
+
+.edit-modal-title {
+    font-size: 15px;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 0;
+}
+
+.edit-modal-close {
+    background: none;
+    border: none;
+    color: #888888;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 0 4px;
+    transition: color 0.2s;
+}
+
+.edit-modal-close:hover {
+    color: #ff4444;
+}
+
+.edit-modal-body {
+    margin-bottom: 14px;
+}
+
+.edit-modal-body .form-group {
+    margin-bottom: 10px;
+}
+
+.edit-modal-body .form-input {
+    font-size: 13px;
+    padding: 7px 10px;
+}
+
+.edit-textarea {
+    resize: vertical;
+    min-height: 44px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.4;
+}
+
+.edit-modal-actions {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+    padding-top: 10px;
+    border-top: 1px solid #2d2d2d;
+}
+
+.edit-modal-actions .btn {
+    margin-top: 0;
+    padding: 5px 18px;
+    font-size: 12px;
+    border-radius: 6px;
+    min-width: 70px;
+}
+
+/* ===== ACCOUNT DESCRIPTION ===== */
+.account-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+    gap: 2px;
+}
+
+.account-description {
+    font-size: 11px;
+    color: #d4d4d4;
+    font-style: italic;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 140px;
+}
+
+/* ===== EDIT BUTTON ===== */
+.account-actions .btn-icon.btn-edit {
+    color: #80d8ff;
+}
+
+.account-actions .btn-icon.btn-edit:hover {
+    background: #2d3d4d;
+}
+
+/* ========================================
+   DRAG & DROP ACCOUNTS
+   ======================================== */
+.account-item {
+    position: relative;
+    transition: transform 0.15s ease, opacity 0.15s ease, background 0.15s ease;
+    cursor: grab;
+}
+
+.account-item:active {
+    cursor: grabbing;
+}
+
+.account-item.dragging {
+    opacity: 0.4;
+    background: #2a3555;
+    cursor: grabbing;
+    transform: scale(0.98);
+}
+
+.account-item.drag-over-top {
+    border-top: 2px solid #4caf50;
+    box-shadow: 0 -2px 8px rgba(76, 175, 80, 0.4);
+}
+
+.account-item.drag-over-bottom {
+    border-bottom: 2px solid #4caf50;
+    box-shadow: 0 2px 8px rgba(76, 175, 80, 0.4);
+}
+
+.account-item.drag-over {
+    background: #2a3a2a;
+    border-color: #4caf50;
+}
+
+/* ===== DRAG HANDLE ===== */
+.account-drag-handle {
+    cursor: grab;
+    color: #666666;
+    font-size: 14px;
+    padding: 0 4px;
+    user-select: none;
+    flex-shrink: 0;
+    letter-spacing: -2px;
+    transition: color 0.2s;
+}
+
+.account-drag-handle:hover {
+    color: #ffaa66;
+}
+
+.account-drag-handle:active {
+    cursor: grabbing;
+}
+
+/* ===== DRAG HINT ===== */
+.drag-hint {
+    display: none;
+    background: #2a3555;
+    color: #a0b3d9;
+    font-size: 10px;
+    padding: 3px 10px;
+    border-radius: 12px;
+    margin-top: 4px;
+    border: 1px dashed #4caf50;
+    text-align: center;
+}
+
+.drag-hint.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== DISABLED TIMEOUT SECTION ===== */
+#timeoutSection.disabled {
+    opacity: 0.45;
+    pointer-events: none;
+    filter: grayscale(0.6);
+    transition: opacity 0.3s, filter 0.3s;
+}
+
+#timeoutSection.disabled button,
+#timeoutSection.disabled input {
+    cursor: not-allowed;
+}
+
+/* ========================================
+   SELECTED FILE PREVIEW CARD
+   ======================================== */
+.selected-file-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.12), rgba(76, 175, 80, 0.05));
+    border: 1px solid rgba(76, 175, 80, 0.4);
+    border-left: 3px solid #4caf50;
+    border-radius: 8px;
+    padding: 10px 12px;
+    margin: 10px 0;
+    animation: slideInFile 0.3s ease;
+    transition: all 0.2s ease;
+}
+
+.selected-file-card:hover {
+    border-color: #4caf50;
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.18), rgba(76, 175, 80, 0.08));
+}
+
+@keyframes slideInFile {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.selected-file-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(76, 175, 80, 0.2);
+    border-radius: 6px;
+}
+
+.selected-file-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.selected-file-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: #ffffff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.selected-file-meta {
+    font-size: 10px;
+    color: #88ff88;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.selected-file-meta::before {
+    content: '✓';
+    color: #4caf50;
+    font-weight: bold;
+}
+
+.selected-file-remove {
+    background: transparent;
+    border: 1px solid #ff4444;
+    color: #ff4444;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    flex-shrink: 0;
+    transition: all 0.2s;
+}
+
+.selected-file-remove:hover {
+    background: #ff4444;
+    color: #ffffff;
+    transform: scale(1.1);
+}

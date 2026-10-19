@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔐 Secure Authenticator</title>
+    <link rel="stylesheet" href="styles/popup.css">
+</head>
+
+<body class="initializing">
+    <!-- Main Container -->
+    <div id="app" class="app-container">
+
+        <!-- Header -->
+        <header class="header">
+            <div class="header-top">
+                <span class="header-title">🔐 Auth</span>
+            </div>
+            <div id="accountCount" class="account-count">
+                <span class="account-count-text">0 accounts</span>
+            </div>
+        </header>
+
+        <!-- ===== SETUP PASSWORD SCREEN ===== -->
+        <div id="setupPasswordScreen" class="screen hidden">
+            <div class="screen-content">
+                <div class="icon-large">🔐</div>
+                <h2 class="screen-title">Set Password</h2>
+                <p class="screen-subtitle">Create your master password (min 6 chars)</p>
+
+                <div class="form-group">
+                    <label class="form-label" for="setupPwd">Password</label>
+                    <input type="password" id="setupPwd" class="form-input" placeholder="Enter password" autofocus>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="setupPwd2">Confirm</label>
+                    <input type="password" id="setupPwd2" class="form-input" placeholder="Confirm password">
+                </div>
+
+                <div id="setupPwdError" class="error-message"></div>
+
+                <button id="setupPwdBtn" class="btn btn-primary btn-block">✅ Next →</button>
+            </div>
+        </div>
+
+        <!-- ===== SETUP RECOVERY SCREEN ===== -->
+        <div id="setupRecoveryScreen" class="screen hidden">
+            <div class="screen-content">
+                <div class="icon-large">🔐</div>
+                <h2 class="screen-title">Recovery Questions</h2>
+                <p class="screen-subtitle">Answer these 3 questions for password recovery</p>
+
+                <div class="form-group">
+                    <label class="form-label" for="recoveryQ1">Q1: What is your favorite color?</label>
+                    <input type="text" id="recoveryQ1" class="form-input" placeholder="Your answer">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="recoveryQ2">Q2: What is your pet's name?</label>
+                    <input type="text" id="recoveryQ2" class="form-input" placeholder="Your answer">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="recoveryQ3">Q3: What is your mother's maiden name?</label>
+                    <input type="text" id="recoveryQ3" class="form-input" placeholder="Your answer">
+                </div>
+
+                <div id="setupRecoveryError" class="error-message"></div>
+
+                <button id="setupRecoveryBtn" class="btn btn-primary btn-block">✅ Save & Unlock</button>
+                <p class="warning-text">⚠️ Remember these answers! They cannot be recovered.</p>
+            </div>
+        </div>
+
+        <!-- ===== LOCK SCREEN ===== -->
+        <div id="lockScreen" class="screen">
+            <div class="screen-content screen-center">
+                <div class="icon-large">🔒</div>
+                <h2 class="screen-title">Enter Password</h2>
+
+                <div class="form-group">
+                    <input type="password" id="lockPwd" class="form-input" placeholder="Enter password" autofocus>
+                </div>
+
+                <div id="lockError" class="error-message"></div>
+
+                <button id="unlockBtn" class="btn btn-primary btn-block">🔓 Unlock</button>
+                <button id="forgotBtn" class="btn btn-secondary btn-block">❓ Forgot Password?</button>
+            </div>
+        </div>
+
+        <!-- ===== FORGOT PASSWORD SCREEN ===== -->
+        <div id="forgotScreen" class="screen hidden">
+            <div class="screen-content">
+                <div class="icon-large">🔐</div>
+                <h2 class="screen-title">Password Recovery</h2>
+                <p class="screen-subtitle">Answer all 3 questions correctly</p>
+
+                <div class="form-group">
+                    <label class="form-label" for="forgotQ1">Q1: What is your favorite color?</label>
+                    <input type="text" id="forgotQ1" class="form-input" placeholder="Your answer">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="forgotQ2">Q2: What is your pet's name?</label>
+                    <input type="text" id="forgotQ2" class="form-input" placeholder="Your answer">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="forgotQ3">Q3: What is your mother's maiden name?</label>
+                    <input type="text" id="forgotQ3" class="form-input" placeholder="Your answer">
+                </div>
+
+                <div id="forgotError" class="error-message"></div>
+
+                <button id="forgotVerifyBtn" class="btn btn-primary btn-block">✅ Verify</button>
+                <button id="forgotCancelBtn" class="btn btn-secondary btn-block">Cancel</button>
+            </div>
+        </div>
+
+        <!-- ===== RESET PASSWORD SCREEN ===== -->
+        <div id="resetScreen" class="screen hidden">
+            <div class="screen-content">
+                <div class="icon-large">🔄</div>
+                <h2 class="screen-title">Reset Password</h2>
+
+                <div class="form-group">
+                    <label class="form-label" for="resetPwd">New Password</label>
+                    <input type="password" id="resetPwd" class="form-input" placeholder="Enter new password" autofocus>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="resetPwd2">Confirm</label>
+                    <input type="password" id="resetPwd2" class="form-input" placeholder="Confirm new password">
+                </div>
+
+                <div id="resetError" class="error-message"></div>
+
+                <button id="resetBtn" class="btn btn-primary btn-block">✅ Reset</button>
+                <button id="resetCancelBtn" class="btn btn-secondary btn-block">Cancel</button>
+            </div>
+        </div>
+
+        <!-- ===== SETTINGS SCREEN ===== -->
+        <div id="settingsScreen" class="screen hidden">
+            <div class="screen-content">
+                <div class="settings-header">
+                    <button id="settingsBackBtn" class="btn btn-small btn-secondary">← Back</button>
+                    <h2 class="screen-title">⚙️ Settings</h2>
+                </div>
+
+                <!-- Auto-Lock Toggle -->
+                <div class="settings-section">
+                    <h3 class="settings-section-title">🔐 Auto-Lock</h3>
+                    <p class="settings-section-desc">Automatically lock after inactivity</p>
+
+                    <div class="settings-toggle" id="autoLockToggleWrapper">
+                        <label class="settings-toggle-label">
+                            <input type="checkbox" id="autoLockToggle" checked>
+                            <span class="settings-toggle-slider"></span>
+                            <span class="settings-toggle-text">Enable Auto-Lock</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="settings-divider"></div>
+
+                <!-- Auto-Lock Timeout -->
+                <div class="settings-section" id="timeoutSection">
+                    <h3 class="settings-section-title">⏰ Auto-Lock Timeout</h3>
+                    <p class="settings-section-desc">Lock the extension after inactivity</p>
+
+                    <div class="settings-row">
+                        <div class="form-group">
+                            <label class="form-label" for="timeoutMinutes">Minutes</label>
+                            <input type="number" id="timeoutMinutes" class="form-input" min="0" max="60" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="timeoutSeconds">Seconds</label>
+                            <input type="number" id="timeoutSeconds" class="form-input" min="0" max="59" value="30">
+                        </div>
+                    </div>
+
+                    <button id="saveTimeoutBtn" class="btn btn-primary btn-block">💾 Save Timeout</button>
+                    <div id="timeoutStatus" class="settings-status"></div>
+                </div>
+
+                <div class="settings-divider"></div>
+
+                <!-- Backup Export -->
+                <div class="settings-section">
+                    <h3 class="settings-section-title">💾 Export Backup</h3>
+                    <p class="settings-section-desc">Export all accounts as a JSON file</p>
+
+                    <button id="exportBackupBtn" class="btn btn-primary btn-block">📤 Export Accounts</button>
+                    <div id="exportStatus" class="settings-status"></div>
+                </div>
+
+                <div class="settings-divider"></div>
+
+                <!-- Backup Import -->
+                <div class="settings-section">
+                    <h3 class="settings-section-title">📥 Import Backup</h3>
+                    <p class="settings-section-desc">Restore accounts from a JSON backup file</p>
+
+                    <div class="settings-file-input">
+                        <input type="file" id="importFileInput" accept=".json" style="display:none">
+                        <button id="importBackupBtn" class="btn btn-secondary btn-block">📂 Choose Backup File</button>
+                    </div>
+
+                    <!-- Selected File Preview Card -->
+                    <div id="selectedFileCard" class="selected-file-card" style="display: none;">
+                        <div class="selected-file-icon">📄</div>
+                        <div class="selected-file-info">
+                            <div class="selected-file-name" id="selectedFileName">filename.json</div>
+                            <div class="selected-file-meta" id="selectedFileMeta">0 KB · Ready to restore</div>
+                        </div>
+                        <button class="selected-file-remove" id="removeSelectedFile" title="Remove file">✕</button>
+                    </div>
+
+                    <button id="restoreBackupBtn" class="btn btn-primary btn-block" disabled>🔄 Restore
+                        Accounts</button>
+                    <div id="importStatus" class="settings-status"></div>
+                </div>
+
+                <div class="settings-divider"></div>
+
+                <!-- Show Account Count When Locked -->
+                <div class="settings-section">
+                    <h3 class="settings-section-title">👁️ Account Count</h3>
+                    <p class="settings-section-desc">Show total accounts even when locked</p>
+
+                    <div class="settings-toggle">
+                        <label class="settings-toggle-label">
+                            <input type="checkbox" id="showAccountCountLocked" checked>
+                            <span class="settings-toggle-slider"></span>
+                            <span class="settings-toggle-text">Show account count when locked</span>
+                        </label>
+                    </div>
+                    <div id="accountCountStatus" class="settings-status"></div>
+                </div>
+
+                <div class="settings-divider"></div>
+
+                <!-- About -->
+                <div class="settings-section">
+                    <h3 class="settings-section-title">ℹ️ About</h3>
+                    <p class="settings-about-text">
+                        🔐 Secure Authenticator v1.1.0<br>
+                        TOTP 2FA Manager with Encryption<br><br>
+                        <span style="color: #555555; font-size: 11px;">
+                            Accounts stored locally with AES-256 encryption.<br>
+                            Backup exported as plain JSON (accounts only).
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== MAIN APP SCREEN (UNLOCKED) ===== -->
+        <div id="mainScreen" class="screen hidden">
+            <!-- Add Account Form -->
+            <div class="add-form">
+                <div class="form-row">
+                    <div class="form-group-inline">
+                        <label class="form-label-small" for="accountName">Name</label>
+                        <input type="text" id="accountName" class="form-input-small" placeholder="e.g., Google">
+                    </div>
+                    <div class="form-group-inline">
+                        <label class="form-label-small" for="accountSecret">Secret</label>
+                        <input type="text" id="accountSecret" class="form-input-small" placeholder="Enter secret key">
+                    </div>
+                    <button id="addAccountBtn" class="btn btn-small btn-primary">Add</button>
+                </div>
+            </div>
+
+            <!-- Account List -->
+            <div id="accountList" class="account-list">
+                <div class="empty-state">
+                    <span class="empty-icon">📭</span>
+                    <p class="empty-text">No accounts</p>
+                    <p class="empty-subtext">Add your first account above</p>
+                </div>
+            </div>
+
+            <!-- Footer Actions -->
+            <div class="footer-actions">
+                <button id="settingsBtn" class="btn btn-small btn-secondary" title="Settings">⚙️</button>
+                <button id="testBtn" class="btn btn-small btn-secondary" title="Add Test Account">🧪 Test</button>
+                <button id="lockBtn" class="btn btn-small btn-secondary" title="Lock Extension">🔒 Lock</button>
+                <span id="statusBar" class="status-bar">✅ Ready</span>
+            </div>
+        </div>
+
+        <!-- ===== EDIT ACCOUNT MODAL ===== -->
+        <div id="editModal" class="edit-modal-overlay">
+            <div class="edit-modal">
+                <div class="edit-modal-header">
+                    <h3 class="edit-modal-title" id="editModalTitle">✏️ Edit Account</h3>
+                    <button class="edit-modal-close" id="editModalClose">✕</button>
+                </div>
+
+                <div class="edit-modal-body">
+                    <div class="form-group">
+                        <label class="form-label" for="editAccountName">Account Name</label>
+                        <input type="text" id="editAccountName" class="form-input" placeholder="e.g., Google">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="editAccountSecret">Secret Key</label>
+                        <input type="text" id="editAccountSecret" class="form-input" placeholder="Base32 secret">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="editAccountDescription">Description (Optional)</label>
+                        <textarea id="editAccountDescription" class="form-input edit-textarea"
+                            placeholder="e.g., Personal account, work email..." rows="2"></textarea>
+                    </div>
+
+                    <div id="editError" class="error-message"></div>
+                </div>
+
+                <div class="edit-modal-actions">
+                    <button class="btn btn-secondary btn-small" id="editModalCancel">Cancel</button>
+                    <button class="btn btn-primary btn-small" id="editModalSave">💾 Save</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Toast Notification -->
+        <div id="toastNotification" class="toast-notification"></div>
+
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+
+</html>
